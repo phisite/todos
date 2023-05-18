@@ -19,11 +19,13 @@ function App() {
   return (
     <>
       <h1>Tasks</h1>
-      <ul>
-        {todos &&
-          todos.length > 0 &&
-          todos.map((todo: TodoI) => <li key={todo.id}>{todo.title}</li>)}
-      </ul>
+      {todos && todos.length > 0 && (
+        <ul>
+          {todos.map((todo: TodoI) => (
+            <li key={todo.id}>{todo.title}</li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
