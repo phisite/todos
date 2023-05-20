@@ -6,4 +6,6 @@ export interface ITodo {
 
 export type TodoContextType = {
   todos: ITodo[] | null;
+  filter: "all" | "done" | "undone";
+  setFilter: (filter: "all" | "done" | "undone") => void;
 };
