@@ -1,32 +1,12 @@
-import { useEffect, useState } from "react";
-
-interface TodoI {
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import { TodoProvider } from "./context/todoContext";
+import { Todos } from "./components/Todos";
 
 function App() {
-  const [todos, setTodos] = useState<TodoI[] | null>(null);
-
-  useEffect(() => {
-    fetch("http://localhost:3001/todos")
-      .then((res) => res.json())
-      .then((data) => setTodos(data))
-      .catch((err) => console.log(err.message));
-  }, []);
-
   return (
-    <>
+    <TodoProvider>
       <h1>Tasks</h1>
-      {todos && todos.length > 0 && (
-        <ul>
-          {todos.map((todo: TodoI) => (
-            <li key={todo.id}>{todo.title}</li>
-          ))}
-        </ul>
-      )}
-    </>
+      <Todos />
+    </TodoProvider>
   );
 }
 
