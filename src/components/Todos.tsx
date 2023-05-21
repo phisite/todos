@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { TodoContext } from "../context/todoContext";
 import { ITodo, TodoContextType } from "../@types/@types.todo";
+import { Todo } from "./Todo";
 
 export const Todos = () => {
   const { todos, filter } = useContext(TodoContext) as TodoContextType;
@@ -23,17 +24,7 @@ export const Todos = () => {
               }
             })
             .map((todo: ITodo) => (
-              <li key={todo.id}>
-                <span
-                  style={
-                    todo.completed
-                      ? { textDecoration: "line-through" }
-                      : { textDecoration: "none" }
-                  }
-                >
-                  {todo.title}
-                </span>
-              </li>
+              <Todo todo={todo} />
             ))}
         </ul>
       )}
