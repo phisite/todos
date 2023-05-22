@@ -11,4 +11,5 @@ export type TodoContextType = {
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
   addTodo: (title: string) => void;
+  editTodo: (id: string, title: string) => void;
 };

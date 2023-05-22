@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { TodoContext } from "../context/todoContext";
 import { ITodo, TodoContextType } from "../@types/@types.todo";
 import classes from "./Todo.module.css";
+import { TodoEditor } from "./TodoEditor";
 
 export const Todo = ({ todo }: { todo: ITodo }) => {
   const { toggleTodo, deleteTodo } = useContext(TodoContext) as TodoContextType;
@@ -14,45 +15,48 @@ export const Todo = ({ todo }: { todo: ITodo }) => {
 
   return (
     <li className={classes.todo}>
-      <input
-        id={`checkbox-${todo.id}`}
-        name={`checkbox-${todo.id}`}
-        onChange={() => toggleTodo(todo.id)}
-        type="checkbox"
-        checked={todo.completed}
-        className={classes.checkbox}
-      />
-      <label
-        htmlFor={`checkbox-${todo.id}`}
-        className={`${classes.todoText} ${
-          todo.completed ? classes.completedText : ""
-        }`}
-      >
-        {todo.title}
-      </label>
-      <div className={classes.dropdownContainer}>
-        <button
-          className={classes.dropdownToggler}
-          onClick={() => toggleDropdownFlag(!dropdownFlag)}
+      <div className={classes.todoEntry}>
+        <input
+          id={`checkbox-${todo.id}`}
+          name={`checkbox-${todo.id}`}
+          onChange={() => toggleTodo(todo.id)}
+          type="checkbox"
+          checked={todo.completed}
+          className={classes.checkbox}
+        />
+        <label
+          htmlFor={`checkbox-${todo.id}`}
+          className={`${classes.todoText} ${
+            todo.completed ? classes.completedText : ""
+          }`}
         >
-          <span className={classes.srOnly}>Action</span>
-        </button>
-        <div className={dropdownFlag ? classes.dropdown : classes.hidden}>
-          <ul>
-            <li>
-              <button className={classes.dropdownSelector}>Edit</button>
-            </li>
-            <li>
-              <button
-                className={`${classes.dropdownSelector} ${classes.dangerText}`}
-                onClick={() => handleDeleteClick(todo.id)}
-              >
-                Delete
-              </button>
-            </li>
-          </ul>
+          {todo.title}
+        </label>
+        <div className={classes.dropdownContainer}>
+          <button
+            className={classes.dropdownToggler}
+            onClick={() => toggleDropdownFlag(!dropdownFlag)}
+          >
+            <span className={classes.srOnly}>Action</span>
+          </button>
+          <div className={dropdownFlag ? classes.dropdown : classes.hidden}>
+            <ul>
+              <li>
+                <button className={classes.dropdownSelector}>Edit</button>
+              </li>
+              <li>
+                <button
+                  className={`${classes.dropdownSelector} ${classes.dangerText}`}
+                  onClick={() => handleDeleteClick(todo.id)}
+                >
+                  Delete
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+      <TodoEditor todo={todo} />
     </li>
   );
 };

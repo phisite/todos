@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { TodoContext } from "../context/todoContext";
-import { TodoContextType } from "../@types/@types.todo";
+import { ITodo, TodoContextType } from "../@types/@types.todo";
 import classes from "./TodoEditor.module.css";
 
-export const TodoEditor = () => {
-  const { addTodo } = useContext(TodoContext) as TodoContextType;
+export const TodoEditor = ({ todo }: { todo: ITodo | null }) => {
+  const { addTodo, editTodo } = useContext(TodoContext) as TodoContextType;
   const [editedFlag, toggleEditedFlag] = useState(false);
 
   const handleTodoTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,10 +21,14 @@ export const TodoEditor = () => {
     };
     // console.log(target.todoTitle.value);
     if (target.todoTitle.value.length > 0) {
-      addTodo(target.todoTitle.value);
+      if (todo) {
+        editTodo(todo.id, target.todoTitle.value);
+      } else {
+        addTodo(target.todoTitle.value);
+        target.todoTitle.value = "";
+      }
     }
     toggleEditedFlag(false);
-    target.todoTitle.value = "";
   };
 
   return (
@@ -37,6 +41,7 @@ export const TodoEditor = () => {
         placeholder="Add your todo..."
         autoComplete="off"
         onChange={(e) => handleTodoTitleChange(e)}
+        defaultValue={todo?.title}
       />
       <button
         type="submit"

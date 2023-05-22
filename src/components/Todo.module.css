@@ -1,4 +1,8 @@
 .todo {
+  list-style: none;
+}
+
+.todoEntry {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,7 +14,6 @@
   font-weight: 400;
   letter-spacing: 0em;
   line-height: 19px;
-  list-style: none;
   text-align: left;
   gap: 16px;
 }

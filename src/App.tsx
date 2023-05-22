@@ -13,7 +13,7 @@ function App() {
         <h1>Tasks</h1>
         <Filter />
         <Todos />
-        <TodoEditor />
+        <TodoEditor todo={null} />
       </div>
     </TodoProvider>
   );
