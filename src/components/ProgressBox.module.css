@@ -1,0 +1,36 @@
+.progressBox {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 19px 25px;
+  border-radius: 20px;
+  background-color: #e07c7c;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+
+.progressLabel {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 32.81px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 7px;
+  margin: 12px 0;
+  border-radius: 3.5px;
+  background-color: #3b3b3b;
+  > .value {
+    height: 7px;
+    border-radius: 3.5px;
+    background-color: #fff;
+  }
+}
+
+.progressText {
+  color: #ebb9b8;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.75px;
+}
