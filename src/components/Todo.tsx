@@ -7,6 +7,12 @@ import { TodoEditor } from "./TodoEditor";
 export const Todo = ({ todo }: { todo: ITodo }) => {
   const { toggleTodo, deleteTodo } = useContext(TodoContext) as TodoContextType;
   const [dropdownFlag, toggleDropdownFlag] = useState(false);
+  const [editorFlag, toggleEditorFlag] = useState(false);
+
+  const handleEditClick = () => {
+    toggleEditorFlag(true);
+    toggleDropdownFlag(false);
+  };
 
   const handleDeleteClick = (id: string) => {
     deleteTodo(id);
@@ -15,7 +21,7 @@ export const Todo = ({ todo }: { todo: ITodo }) => {
 
   return (
     <li className={classes.todo}>
-      <div className={classes.todoEntry}>
+      <div className={editorFlag ? classes.hidden : classes.todoEntry}>
         <input
           id={`checkbox-${todo.id}`}
           name={`checkbox-${todo.id}`}
@@ -42,7 +48,12 @@ export const Todo = ({ todo }: { todo: ITodo }) => {
           <div className={dropdownFlag ? classes.dropdown : classes.hidden}>
             <ul>
               <li>
-                <button className={classes.dropdownSelector}>Edit</button>
+                <button
+                  className={classes.dropdownSelector}
+                  onClick={() => handleEditClick()}
+                >
+                  Edit
+                </button>
               </li>
               <li>
                 <button
@@ -56,7 +67,9 @@ export const Todo = ({ todo }: { todo: ITodo }) => {
           </div>
         </div>
       </div>
-      <TodoEditor todo={todo} />
+      <div className={editorFlag ? "" : classes.hidden}>
+        <TodoEditor todo={todo} toggleEditorFlag={toggleEditorFlag} />
+      </div>
     </li>
   );
 };

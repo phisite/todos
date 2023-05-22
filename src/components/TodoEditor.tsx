@@ -1,9 +1,15 @@
-import { useState, useContext } from "react";
+import { useState, useContext, Dispatch } from "react";
 import { TodoContext } from "../context/todoContext";
 import { ITodo, TodoContextType } from "../@types/@types.todo";
 import classes from "./TodoEditor.module.css";
 
-export const TodoEditor = ({ todo }: { todo: ITodo | null }) => {
+export const TodoEditor = ({
+  todo,
+  toggleEditorFlag,
+}: {
+  todo?: ITodo;
+  toggleEditorFlag?: Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { addTodo, editTodo } = useContext(TodoContext) as TodoContextType;
   const [editedFlag, toggleEditedFlag] = useState(false);
 
@@ -21,8 +27,9 @@ export const TodoEditor = ({ todo }: { todo: ITodo | null }) => {
     };
     // console.log(target.todoTitle.value);
     if (target.todoTitle.value.length > 0) {
-      if (todo) {
+      if (todo && toggleEditorFlag) {
         editTodo(todo.id, target.todoTitle.value);
+        toggleEditorFlag(false);
       } else {
         addTodo(target.todoTitle.value);
         target.todoTitle.value = "";
