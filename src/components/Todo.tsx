@@ -1,15 +1,21 @@
 import { ITodo } from "../@types/@types.todo";
+import classes from "./Todo.module.css";
 
 export const Todo = ({ todo }: { todo: ITodo }) => (
-  <li>
-    <span
-      style={
-        todo.completed
-          ? { textDecoration: "line-through" }
-          : { textDecoration: "none" }
-      }
+  <li className={classes.todo}>
+    <input
+      id={`checkbox-${todo.id}`}
+      name={`checkbox-${todo.id}`}
+      // onChange={() => {}}
+      type="checkbox"
+      // checked={todo.completed}
+      className={classes.checkbox}
+    />
+    <label
+      htmlFor={`checkbox-${todo.id}`}
+      className={todo.completed ? classes.completedText : ""}
     >
       {todo.title}
-    </span>
+    </label>
   </li>
 );

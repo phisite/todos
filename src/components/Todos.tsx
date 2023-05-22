@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { TodoContext } from "../context/todoContext";
 import { ITodo, TodoContextType } from "../@types/@types.todo";
 import { Todo } from "./Todo";
+import classes from "./Todos.module.css";
 
 export const Todos = () => {
   const { todos, filter } = useContext(TodoContext) as TodoContextType;
@@ -9,7 +10,7 @@ export const Todos = () => {
   return (
     <>
       {todos && todos.length > 0 && (
-        <ul>
+        <ul className={classes.todos}>
           {todos
             .filter((todo: ITodo) => {
               switch (filter) {

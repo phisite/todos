@@ -1,0 +1,52 @@
+.todo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 23px;
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 19px;
+  list-style: none;
+  text-align: left;
+  gap: 16px;
+}
+
+.todo + .todo {
+  margin-top: 16px;
+}
+
+/* https://moderncss.dev/pure-css-custom-checkbox-style/ */
+
+.checkbox {
+  display: grid;
+  place-content: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #585292;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #585292;
+  appearance: none;
+  &::before {
+    width: 10.209918022155762px;
+    height: 7.877374172210693px;
+    transform: scale(0);
+    background-image: url(../assets/checkmark.svg);
+    content: "";
+  }
+  &:checked {
+    background-color: #585292;
+    &::before {
+      transform: scale(1);
+    }
+  }
+}
+
+.completedText {
+  color: #a9a9a9;
+  text-decoration: line-through;
+}
