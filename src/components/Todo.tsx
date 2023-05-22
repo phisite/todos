@@ -1,7 +1,7 @@
 import { ITodo } from "../@types/@types.todo";
 
 export const Todo = ({ todo }: { todo: ITodo }) => (
-  <li key={todo.id}>
+  <li>
     <span
       style={
         todo.completed

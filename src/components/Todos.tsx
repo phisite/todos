@@ -24,7 +24,7 @@ export const Todos = () => {
               }
             })
             .map((todo: ITodo) => (
-              <Todo todo={todo} />
+              <Todo todo={todo} key={todo.id} />
             ))}
         </ul>
       )}
