@@ -16,8 +16,20 @@ export const TodoProvider: React.FunctionComponent<
       .catch((err) => console.log(err.message));
   }, []);
 
+  const toggleTodo = (id: string) => {
+    if (todos) {
+      const newTodos = todos?.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      });
+      setTodos(newTodos);
+    }
+  };
+
   return (
-    <TodoContext.Provider value={{ todos, filter, setFilter }}>
+    <TodoContext.Provider value={{ todos, filter, setFilter, toggleTodo }}>
       {children}
     </TodoContext.Provider>
   );
