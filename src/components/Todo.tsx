@@ -18,10 +18,15 @@ export const Todo = ({ todo }: { todo: ITodo }) => {
       />
       <label
         htmlFor={`checkbox-${todo.id}`}
-        className={todo.completed ? classes.completedText : ""}
+        className={`${classes.todoText} ${
+          todo.completed ? classes.completedText : ""
+        }`}
       >
         {todo.title}
       </label>
+      <button className={classes.dropdownToggler}>
+        <span className={classes.srOnly}>Action</span>
+      </button>
     </li>
   );
 };
