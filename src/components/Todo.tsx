@@ -4,8 +4,13 @@ import { ITodo, TodoContextType } from "../@types/@types.todo";
 import classes from "./Todo.module.css";
 
 export const Todo = ({ todo }: { todo: ITodo }) => {
-  const { toggleTodo } = useContext(TodoContext) as TodoContextType;
+  const { toggleTodo, deleteTodo } = useContext(TodoContext) as TodoContextType;
   const [dropdownFlag, toggleDropdownFlag] = useState(false);
+
+  const handleDeleteClick = (id: string) => {
+    deleteTodo(id);
+    toggleDropdownFlag(false);
+  };
 
   return (
     <li className={classes.todo}>
@@ -40,6 +45,7 @@ export const Todo = ({ todo }: { todo: ITodo }) => {
             <li>
               <button
                 className={`${classes.dropdownSelector} ${classes.dangerText}`}
+                onClick={() => handleDeleteClick(todo.id)}
               >
                 Delete
               </button>

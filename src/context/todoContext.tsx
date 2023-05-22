@@ -28,8 +28,16 @@ export const TodoProvider: React.FunctionComponent<
     }
   };
 
+  const deleteTodo = (id: string) => {
+    if (todos) {
+      setTodos(todos?.filter((todo) => todo.id !== id));
+    }
+  };
+
   return (
-    <TodoContext.Provider value={{ todos, filter, setFilter, toggleTodo }}>
+    <TodoContext.Provider
+      value={{ todos, filter, setFilter, toggleTodo, deleteTodo }}
+    >
       {children}
     </TodoContext.Provider>
   );
