@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { ITodo, TodoContextType } from "../@types/@types.todo";
 
 export const TodoContext = createContext<TodoContextType | null>(null);
@@ -34,9 +35,18 @@ export const TodoProvider: React.FunctionComponent<
     }
   };
 
+  const addTodo = (title: string) => {
+    const newTodo = { id: uuidv4(), title, completed: false };
+    if (todos) {
+      setTodos([...todos, newTodo]);
+    } else {
+      setTodos([newTodo]);
+    }
+  };
+
   return (
     <TodoContext.Provider
-      value={{ todos, filter, setFilter, toggleTodo, deleteTodo }}
+      value={{ todos, filter, setFilter, toggleTodo, deleteTodo, addTodo }}
     >
       {children}
     </TodoContext.Provider>

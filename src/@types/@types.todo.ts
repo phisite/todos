@@ -10,4 +10,5 @@ export type TodoContextType = {
   setFilter: (filter: "all" | "done" | "undone") => void;
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
+  addTodo: (title: string) => void;
 };
