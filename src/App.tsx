@@ -2,6 +2,7 @@ import { TodoProvider } from "./context/todoContext";
 import { Todos } from "./components/Todos";
 import { Filter } from "./components/Filter";
 import { ProgressBox } from "./components/ProgressBox";
+import { TodoEditor } from "./components/TodoEditor";
 import classes from "./App.module.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <h1>Tasks</h1>
         <Filter />
         <Todos />
+        <TodoEditor />
       </div>
     </TodoProvider>
   );

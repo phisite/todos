@@ -1,0 +1,39 @@
+.editor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+  padding: 5px 6px 5px 20px;
+  border-radius: 23px;
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 19px;
+  list-style: none;
+  text-align: left;
+  gap: 16px;
+}
+
+.editorInput {
+  flex-grow: 1;
+  border: none;
+  &::placeholder {
+    color: #bcbcbc;
+  }
+}
+
+.editorSubmit {
+  padding: 10px 17px;
+  border: none;
+  border-radius: 18px;
+  background-color: #585292;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 16px;
+  text-align: left;
+}
