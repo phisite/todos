@@ -36,8 +36,8 @@
   color: #585292;
   appearance: none;
   &::before {
-    width: 10.209918022155762px;
-    height: 7.877374172210693px;
+    width: 11px;
+    height: 9px;
     transform: scale(0);
     background-image: url(../assets/checkmark.svg);
     content: "";
@@ -75,8 +75,8 @@
   border: none;
   background: transparent;
   &::before {
-    width: 19.200000762939453px;
-    height: 4.799999237060547px;
+    width: 20px;
+    height: 6px;
     border-radius: 0px;
     background-image: url(../assets/threedots.svg);
     content: "";

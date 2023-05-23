@@ -22,8 +22,8 @@
     /* text-transform: capitalize; */
   }
   > .caret {
-    width: 6.658167362213135px;
-    height: 4.153916835784912px;
+    width: 8px;
+    height: 5px;
     border-radius: 0px;
     background-image: url(../assets/chevdown.svg);
     content: "";
