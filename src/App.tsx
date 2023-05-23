@@ -10,8 +10,10 @@ function App() {
     <TodoProvider>
       <div className={classes.todoContainer}>
         <ProgressBox />
-        <h1>Tasks</h1>
-        <Filter />
+        <div className={classes.nav}>
+          <h1>Tasks</h1>
+          <Filter />
+        </div>
         <Todos />
         <TodoEditor />
       </div>
